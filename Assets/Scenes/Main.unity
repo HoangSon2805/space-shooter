@@ -1084,6 +1084,9 @@ MonoBehaviour:
   - id: enemy_basic
     prefab: {fileID: 8131141261678322870, guid: 20ffb8f56f8a39f4d9a4d3cc0fedcc01, type: 3}
     initialSize: 24
+  - id: enemy_bullet
+    prefab: {fileID: 2637390516958984288, guid: 2ea5ebcf21cb931478bd62fc8fc34b8c, type: 3}
+    initialSize: 64
 --- !u!4 &1542735411
 Transform:
   m_ObjectHideFlags: 0
@@ -1223,6 +1226,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5398297812239922890, guid: 20ffb8f56f8a39f4d9a4d3cc0fedcc01, type: 3}
+      propertyPath: pool
+      value: 
+      objectReference: {fileID: 1542735410}
     - target: {fileID: 8131141261678322870, guid: 20ffb8f56f8a39f4d9a4d3cc0fedcc01, type: 3}
       propertyPath: m_Name
       value: EnemyBasic

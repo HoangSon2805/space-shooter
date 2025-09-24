@@ -7,7 +7,11 @@ public class DamageOnContact : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         if (!other.CompareTag(targetTag)) return;
-        other.GetComponent<Health>()?.TakeDamage(damage);
+
+        var dr = other.GetComponent<DamageReceiver>();
+        if (dr) dr.Apply(damage);
+        else other.GetComponent<Health>()?.TakeDamage(damage);
+
         if (selfDisableOnHit) gameObject.SetActive(false);
     }
 }

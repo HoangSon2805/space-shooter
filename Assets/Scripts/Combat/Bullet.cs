@@ -20,8 +20,12 @@ public class Bullet : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         if (!other.CompareTag(targetTag)) return;
-        other.GetComponent<Health>()?.TakeDamage(damage); // áp sát thương nếu có
-        Destroy(gameObject);
+
+        var dr = other.GetComponent<DamageReceiver>();
+        if (dr) dr.Apply(damage);
+        else other.GetComponent<Health>()?.TakeDamage(damage);
+
+        Despawn();
     }
     void Despawn() {
         if (_link && _link.pool) _link.ReturnToPool();
