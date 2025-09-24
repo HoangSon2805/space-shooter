@@ -1,36 +1,45 @@
-using UnityEngine;
-using UnityEngine.PlayerLoop;
+﻿using UnityEngine;
 
-public class PlayerControllers : MonoBehaviour
-{
+public class PlayerController2D : MonoBehaviour {
     public float moveSpeed = 8f;
+    public Vector2 minBounds = new(-3f, -4.5f);
+    public Vector2 maxBounds = new(3f, 4.5f);
 
-    [Header("Movement boundaries")]
-    public Vector2 minBounds = new Vector2(-3f, -4.5f);
-    public Vector2 maxBounds = new Vector2(3f, 4.5f);
-    
-    // Update is called once per frame
-    void Update()
-    {   
-        // Read input (WASD or Arraw keys)
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float fireRate = 0.15f;
+
+    float _cooldown;
+
+    void Update() {
+        // Di chuyển (WASD/Arrow)
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-
-        // Calculate movement vector
         Vector3 move = new Vector3(h, v, 0f).normalized;
-
-        // Apply movement
         transform.position += move * moveSpeed * Time.deltaTime;
-
-        // Clamp player position inside screen bounds
         ClampToBounds();
 
+        // Bắn đạn (Space/Mouse0)
+        _cooldown -= Time.deltaTime;
+        if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && _cooldown <= 0f)
+        {
+            _cooldown = fireRate;
+            if (bulletPrefab && firePoint)
+            {
+                var go = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                var b = go.GetComponent<Bullet>();
+                if (b != null) b.targetTag = "Enemy";
+            }
+#if UNITY_EDITOR
+            else Debug.LogWarning("Thiếu bulletPrefab hoặc firePoint.");
+#endif
+        }
     }
 
     void ClampToBounds() {
-        Vector3 pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, minBounds.x, maxBounds.x);
-        pos.y = Mathf.Clamp(pos.y, minBounds.y, maxBounds.y);
-        transform.position = pos;
+        var p = transform.position;
+        p.x = Mathf.Clamp(p.x, minBounds.x, maxBounds.x);
+        p.y = Mathf.Clamp(p.y, minBounds.y, maxBounds.y);
+        transform.position = p;
     }
 }
