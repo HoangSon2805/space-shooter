@@ -1,18 +1,29 @@
 ﻿using UnityEngine;
+using System;
 
 public class Health : MonoBehaviour {
-    public int maxHP = 5;
+    public int maxHP = 3;
     int _hp;
 
-    void OnEnable() { _hp = maxHP; }
+    public int Current => _hp;
+    public event Action<int, int> OnChanged; // (current, max)
+    public event Action OnDead;
 
-    public void TakeDamage(int dmg) {
-        _hp = Mathf.Max(0, _hp - Mathf.Max(0, dmg));
-        if (_hp == 0) OnDie();
+    void OnEnable() {
+        _hp = maxHP;
+        OnChanged?.Invoke(_hp, maxHP);
     }
 
-    void OnDie() {
-        gameObject.SetActive(false);
-        // Có thể phát sự kiện chết hoặc spawn VFX về sau
+    public bool TakeDamage(int dmg) {
+        if (dmg <= 0) return false;
+        _hp = Mathf.Max(0, _hp - dmg);
+        OnChanged?.Invoke(_hp, maxHP);
+        if (_hp == 0)
+        {
+            OnDead?.Invoke();
+            gameObject.SetActive(false);
+            return true;
+        }
+        return false;
     }
 }
