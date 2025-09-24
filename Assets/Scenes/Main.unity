@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8131141261678322870, guid: 20ffb8f56f8a39f4d9a4d3cc0fedcc01, type: 3}
-  spawnX: {x: -8.5, y: 8.5}
+  spawnX: {x: -3, y: 3}
   spawnY: 6.5
   interval: 0.8
   intervalMin: 0.25

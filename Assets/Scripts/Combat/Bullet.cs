@@ -7,7 +7,9 @@ public class Bullet : MonoBehaviour {
     public string targetTag = "Enemy";
 
     float _t;
+    PoolLink _link;
 
+    void Awake() { _link = GetComponent<PoolLink>(); }
     void OnEnable() { _t = 0f; }
 
     void Update() {
@@ -20,5 +22,9 @@ public class Bullet : MonoBehaviour {
         if (!other.CompareTag(targetTag)) return;
         other.GetComponent<Health>()?.TakeDamage(damage); // áp sát thương nếu có
         Destroy(gameObject);
+    }
+    void Despawn() {
+        if (_link && _link.pool) _link.ReturnToPool();
+        else Destroy(gameObject);
     }
 }

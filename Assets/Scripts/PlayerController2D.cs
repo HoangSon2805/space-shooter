@@ -8,7 +8,8 @@ public class PlayerController2D : MonoBehaviour {
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireRate = 0.15f;
-
+    public ObjectPool pool;           // dùng pool
+    public string bulletPoolId = "player_bullet";
     float _cooldown;
 
     void Update() {

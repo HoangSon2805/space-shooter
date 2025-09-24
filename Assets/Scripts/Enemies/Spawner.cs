@@ -2,7 +2,8 @@
 
 public class Spawner : MonoBehaviour {
     public GameObject enemyPrefab;
-
+    public ObjectPool pool;           // dùng pool
+    public string enemyPoolId = "enemy_basic";
     // Khoảng X sinh địch (tọa độ world)
     public Vector2 spawnX = new(-8.5f, 8.5f);
 
