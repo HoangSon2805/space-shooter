@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 27746032510444947}
   - component: {fileID: 2707103975906470389}
   - component: {fileID: 7950819221616107478}
+  - component: {fileID: 6129731755371198892}
   m_Layer: 0
   m_Name: EnemyBasic
   m_TagString: Enemy
@@ -187,3 +188,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 2
+--- !u!114 &6129731755371198892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8131141261678322870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5160bb61f73e3d24991835c2642cef22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 10
