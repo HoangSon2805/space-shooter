@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(PlayerUpgrades))]
+[RequireComponent(typeof(PlayerExperience))]
+[RequireComponent(typeof(Health))]
 public class PlayerController2D : MonoBehaviour {
     public float moveSpeed = 8f;
     public Vector2 minBounds = new(-3f, -4.5f);
