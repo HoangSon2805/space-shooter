@@ -2876,6 +2876,8 @@ GameObject:
   - component: {fileID: 1346690261}
   - component: {fileID: 1346690262}
   - component: {fileID: 1346690263}
+  - component: {fileID: 1346690265}
+  - component: {fileID: 1346690264}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -3134,6 +3136,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   invulnDuration: 1
   blinkInterval: 0.1
+--- !u!114 &1346690264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346690255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d35986e5478e1540bbe9b16a477fb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDamage: 1
+  fireRateMult: 1
+  moveSpeedMult: 1
+  extraProjectiles: 0
+  spreadAngle: 15
+  maxHPBonus: 0
+--- !u!114 &1346690265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346690255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e559468f21bae0e448820f305410a0ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  xp: 0
+  baseXp: 20
+  growth: 1.2
+  xpToNext: 20
 --- !u!1 &1389126267
 GameObject:
   m_ObjectHideFlags: 0
