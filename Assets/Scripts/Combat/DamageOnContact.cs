@@ -12,6 +12,8 @@ public class DamageOnContact : MonoBehaviour {
         if (dr) dr.Apply(damage);
         else other.GetComponent<Health>()?.TakeDamage(damage);
 
-        if (selfDisableOnHit) gameObject.SetActive(false);
+        if (selfDisableOnHit) {
+            
+            gameObject.SetActive(false); }
     }
 }

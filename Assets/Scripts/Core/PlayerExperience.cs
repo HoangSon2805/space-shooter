@@ -23,6 +23,7 @@ public class PlayerExperience : MonoBehaviour {
             xp -= xpToNext;
             level++;
             OnLevelUp?.Invoke(level);
+            if (AudioManager.I != null) AudioManager.I.SfxLevelUp();
             xpToNext = NextForLevel(level);
         }
     }

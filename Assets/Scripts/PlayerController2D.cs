@@ -45,10 +45,11 @@ public class PlayerController2D : MonoBehaviour {
     void Fire() {
         int extra = _up ? _up.extraProjectiles : 0;
         int count = 1 + Mathf.Max(0, extra);
-
+        if (AudioManager.I != null) AudioManager.I.SfxShoot();
         if (count == 1)
         {
             SpawnBullet(firePoint.position, firePoint.rotation);
+            
             return;
         }
 
@@ -62,6 +63,7 @@ public class PlayerController2D : MonoBehaviour {
             var rot = firePoint.rotation * Quaternion.Euler(0, 0, ang);
             SpawnBullet(firePoint.position, rot);
         }
+        
     }
 
     void SpawnBullet(Vector3 pos, Quaternion rot) {

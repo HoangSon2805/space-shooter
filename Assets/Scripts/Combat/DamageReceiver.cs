@@ -17,7 +17,11 @@ public class DamageReceiver : MonoBehaviour {
     public bool Apply(int dmg) {
         if (_invuln || dmg <= 0) return false;
         bool died = _hp.TakeDamage(dmg);
-        if (!died) StartCoroutine(IFrames());
+        if (!died)
+        {
+            if (AudioManager.I != null) AudioManager.I.SfxHit();
+            StartCoroutine(IFrames());
+        }
         return died;
     }
 
