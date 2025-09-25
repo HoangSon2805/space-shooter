@@ -31,4 +31,17 @@ public class Bullet : MonoBehaviour {
         if (_link && _link.pool) _link.ReturnToPool();
         else Destroy(gameObject);
     }
+    void LateUpdate() {
+        var cam = Camera.main;
+        if (!cam) return;
+        var v = cam.WorldToViewportPoint(transform.position);
+        // ra ngoài màn hình (thêm 5% đệm) thì thu hồi
+        if (v.x < -0.05f || v.x > 1.05f || v.y < -0.05f || v.y > 1.05f)
+            Despawn();
+    }
+
+    // Fallback: rời tầm nhìn sẽ gọi luôn
+    void OnBecameInvisible() {
+        Despawn();
+    }
 }
