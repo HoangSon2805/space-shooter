@@ -26,4 +26,9 @@ public class Health : MonoBehaviour {
         }
         return false;
     }
+    public void Heal(int v) {
+        if (v <= 0) return;
+        _hp = Mathf.Min(maxHP, _hp + v);
+        OnChanged?.Invoke(_hp, maxHP);
+    }
 }
