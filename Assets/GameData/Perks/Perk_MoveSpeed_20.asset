@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a45f5f77334f14f8b1a820aa562ec0, type: 3}
   m_Name: Perk_MoveSpeed_20
   m_EditorClassIdentifier: 
-  title: 
-  description: 
+  title: Speed
+  description: Speed +20%
   icon: {fileID: 21300000, guid: 23a9cc99ede83df4a8f36b3404c945c1, type: 3}
   factor: 1.2

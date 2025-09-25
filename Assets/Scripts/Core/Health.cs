@@ -21,6 +21,7 @@ public class Health : MonoBehaviour {
         if (_hp == 0)
         {
             OnDead?.Invoke();
+            if (AudioManager.I != null) AudioManager.I.SfxEnemyDie();
             gameObject.SetActive(false);
             return true;
         }
